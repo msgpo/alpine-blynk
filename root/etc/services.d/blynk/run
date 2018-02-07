@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+cd ${BLYNK_HOME} || exit 1;
+
+s6-setuidgid alpine exec java -jar ${BLYNK_HOME}/blynk.jar -dataFolder ${BLYNK_HOME}/data -serverConfig ${BLYNK_HOME}/server.properties
