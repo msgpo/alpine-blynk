@@ -9,9 +9,9 @@ ENV BLYNK_HOME=/opt/blynk
 RUN set -xe \
     && apk add --no-cache --purge -uU curl libxrender nss unzip \
     && mkdir -p ${BLYNK_HOME}/data \
-#     && VERSION=$(curl -SL https://api.github.com/repos/blynkkk/blynk-server/releases/latest | awk '/tag_name/{print $4;exit}' FS='[""]' | sed -e 's_v__') \
-#     && ( [[ -z "${VERSION}" ]] && exit 1 || true ) \
-    && VERSION=0.41.3 \
+    && VERSION=$(curl -SL https://api.github.com/repos/blynkkk/blynk-server/releases/latest | awk '/tag_name/{print $4;exit}' FS='[""]' | sed -e 's_v__') \
+    && ( [[ -z "${VERSION}" ]] && exit 1 || true ) \
+#     && VERSION=0.41.3 \
     && echo "using version: ${VERSION}" > ${BLYNK_HOME}/version \
     && curl -o ${BLYNK_HOME}/blynk.jar -SL https://github.com/blynkkk/blynk-server/releases/download/v${VERSION}/server-${VERSION}-java8.jar \
     && curl -o ${BLYNK_HOME}/server.properties -SL https://raw.githubusercontent.com/blynkkk/blynk-server/master/server/core/src/main/resources/server.properties \
